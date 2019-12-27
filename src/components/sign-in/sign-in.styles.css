@@ -1,0 +1,15 @@
+.sign-in {
+  width: 30vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sign-in .title {
+  margin: 10px 0;
+}
+/*# sourceMappingURL=sign-in.styles.css.map */
