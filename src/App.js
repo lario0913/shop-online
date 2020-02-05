@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Switch, Route, Redirect } from 'react-router-dom'
 
@@ -17,20 +17,12 @@ import {checkUserSession} from './redux/user/user.actions'
 
 
 
-class App extends React.Component {
+const  App = ({checkUserSession}) =>  {
 
-  unsubscribeFromAuth = null
+    useEffect(()=> {
+      checkUserSession()
+    }, [checkUserSession])
 
-  componentDidMount(){
-    const {checkUserSession} = this.props
-    checkUserSession()
-  }
-  
-  componentWillUnmount(){
-    this.unsubscribeFromAuth()
-  }
-
-  render(){
     return (
       <div>
         <Header />
@@ -47,7 +39,7 @@ class App extends React.Component {
         </Switch>
       </div>
   )
- }
+ 
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -59,3 +51,49 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
+
+// class App extends React.Component {
+
+//   unsubscribeFromAuth = null
+
+//   componentDidMount(){
+//     const {checkUserSession} = this.props
+//     checkUserSession()
+//   }
+  
+//   componentWillUnmount(){
+//     this.unsubscribeFromAuth()
+//   }
+
+//   render(){
+//     return (
+//       <div>
+//         <Header />
+//         <Switch>
+//           <Route exact path='/' component={HomePage} />
+//           <Route  path='/shop' component={ShopPage} />
+//           <Route exact path='/checkout' component={CheckoutPage} />
+
+//           <Route exact path='/signIn' render={ () => 
+//             this.props.currentUser ?
+//             (<Redirect to='/' />) :
+//             (<SignInAndSignUpPage/>)
+//           } />
+//         </Switch>
+//       </div>
+//   )
+//  }
+// }
+
+// const mapStateToProps = createStructuredSelector({
+//   currentUser : selectCurrentUser
+// })
+
+// const mapDispatchToProps = dispatch => ({
+//   checkUserSession: () => dispatch(checkUserSession())
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
