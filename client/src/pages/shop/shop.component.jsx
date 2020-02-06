@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import {Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-
 import {fetchCollectionStart} from '../../redux/shop/shop.action'
 
 
