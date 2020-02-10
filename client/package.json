@@ -2,7 +2,9 @@
   "name": "crown-clothings",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.19.2",
     "firebase": "^7.5.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
